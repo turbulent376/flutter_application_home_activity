@@ -12,15 +12,12 @@ class Family {
   Family(this.id, this.familyName, this.members, this.ownerId);
 
   Family.fromJson(Map<String, dynamic> json)
-      : id = UuidValue(json['id']),
-        familyName = json['familyName'],
+      : id = UuidValue(json['Id']),
+        familyName = json['Name'],
         members = List<User>.from(
-            json['members'].map((model) => User.fromJson(model)).toList()),
-        ownerId = UuidValue(json['ownerId']);
+            json['Members'].map((model) => User.fromJson(model)).toList()),
+        ownerId = UuidValue(json['Owner']);
 
-  Map<String, dynamic> toJson() => {
-        'id': id.toString(),
-        'familyName': familyName,
-        'ownerId': ownerId,
-      };
+  Map<String, dynamic> toJson() =>
+      {'Id': id.toString(), 'Name': familyName, 'Owner': ownerId};
 }

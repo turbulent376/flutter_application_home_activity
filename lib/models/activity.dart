@@ -5,22 +5,29 @@ import 'package:flutter_application_1/homeactivity.dart';
 
 class Activity {
   final UuidValue id;
-  final String familyName;
-  final List<User> members;
+  final UuidValue activityTypeId;
   final UuidValue ownerId;
+  final UuidValue familyId;
+  final DateTime startTime;
+  final DateTime endTime;
 
-  Family(this.id, this.familyName, this.members, this.ownerId);
+  Activity(this.id, this.activityTypeId, this.ownerId, this.familyId,
+      this.startTime, this.endTime);
 
-  Family.fromJson(Map<String, dynamic> json)
-      : id = UuidValue(json['id']),
-        familyName = json['familyName'],
-        members = List<User>.from(
-            json['members'].map((model) => User.fromJson(model)).toList()),
-        ownerId = UuidValue(json['ownerId']);
+  Activity.fromJson(Map<String, dynamic> json)
+      : id = UuidValue(json['Id']),
+        activityTypeId = UuidValue(json['Type']),
+        ownerId = UuidValue(json['Owner']),
+        familyId = UuidValue(json['Family']),
+        startTime = DateTime.fromMillisecondsSinceEpoch(json['DateFrom']),
+        endTime = DateTime.fromMillisecondsSinceEpoch(json['DateTo']);
 
   Map<String, dynamic> toJson() => {
-        'id': id.toString(),
-        'familyName': familyName,
-        'ownerId': ownerId,
+        'Id': id.toString(),
+        'Type': activityTypeId.toString(),
+        'Owner': ownerId.toString(),
+        'Family': familyId.toString(),
+        'DateFrom': startTime.millisecondsSinceEpoch,
+        'DateTo': endTime.millisecondsSinceEpoch
       };
 }

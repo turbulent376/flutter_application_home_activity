@@ -13,17 +13,17 @@ class User {
   User(this.id, this.name, this.surname, this.username);
 
   User.fromJson(Map<String, dynamic> json)
-      : id = UuidValue(json['id']),
-        name = json['name'],
-        surname = json['surname'],
-        username = json['username'],
-        familyId = UuidValue(json['familyId']);
+      : id = UuidValue(json['Id']),
+        name = json['Name'],
+        surname = json['Surname'],
+        username = json['Username'],
+        familyId = UuidValue(json['Family']);
 
   Map<String, dynamic> toJson() => {
-        'id': id.toString(),
-        'name': name,
-        'surname': surname,
-        'username': username,
-        'familyId': familyId,
+        'Id': id.toString(),
+        'Name': name,
+        'Surname': surname,
+        'Username': username,
+        'Family': familyId,
       };
 }
